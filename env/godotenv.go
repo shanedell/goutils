@@ -15,6 +15,12 @@ func LoadEnvFileNoError(envFilePath string) {
 	}
 }
 
+// LoadEnvFileNoErrorNoLog loads the passed env file.
+// If there is an error nothing happens.
+func LoadEnvFileNoErrorNoLog(envFilePath string) {
+	_ = godotenv.Load(envFilePath)
+}
+
 // LoadEnvFileWithError loads the passed env file.
 // If there is an error it is returned.
 func LoadEnvFileWithError(envFilePath string) error {
