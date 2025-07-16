@@ -8,8 +8,8 @@ import (
 var boolSliceVarName = "TEST_GET_BOOL_SLICE"
 
 func boolSliceTest(args *sliceTestArgs[bool]) {
-	os.Setenv(stringSliceVarName, args.Common.VarValue)
-	res, err := GetBoolSlice(stringSliceVarName, ",", args.DefaultValue)
+	os.Setenv(boolSliceVarName, args.Common.VarValue)
+	res, err := GetBoolSlice(boolSliceVarName, ",", args.DefaultValue)
 	CheckSliceResults(args.Common.T, res, args.Expected, err, args.Common.ShouldBeError)
 }
 
