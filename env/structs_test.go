@@ -49,3 +49,9 @@ type stringTestArgs struct {
 	Expected     string
 	DefaultValue string
 }
+
+type sliceTestArgs[T comparable] struct {
+	Common       *commonTestArgs
+	Expected     []T
+	DefaultValue []T
+}
