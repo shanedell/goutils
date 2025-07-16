@@ -25,4 +25,4 @@ jobs:
         with:
           github-token: "${{ github.token }}"
           working-directory: env
-          version: v1.58.2
+          version: v1.63.4
