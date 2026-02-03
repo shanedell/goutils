@@ -7,6 +7,16 @@ import (
 	"strings"
 )
 
+// ConvertStringToSlice splits a string by the delimiter and returns the list.
+func ConvertStringToSlice(delimiter string, data string) []string {
+	return slices.DeleteFunc(
+		strings.Split(data, delimiter),
+		func(e string) bool {
+			return e == "" || e == " "
+		},
+	)
+}
+
 // GetStringSlice looks up the environment variable and returns an string slice.
 // If the looked up variable is not set the default value is returned.
 // If the variable is set, its content is returned as an string slice.
@@ -16,12 +26,7 @@ func GetStringSlice(varName string, delimiter string, defaultValue []string) []s
 		return defaultValue
 	}
 
-	return slices.DeleteFunc(
-		strings.Split(value, delimiter),
-		func(e string) bool {
-			return e == "" || e == " "
-		},
-	)
+	return ConvertStringToSlice(delimiter, value)
 }
 
 // GetBoolSlice looks up the environment variable and returns an bool slice or error.
