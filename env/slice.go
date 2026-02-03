@@ -2,20 +2,10 @@ package env
 
 import (
 	"os"
-	"slices"
 	"strconv"
-	"strings"
-)
 
-// ConvertStringToSlice splits a string by the delimiter and returns the list.
-func ConvertStringToSlice(delimiter string, data string) []string {
-	return slices.DeleteFunc(
-		strings.Split(data, delimiter),
-		func(e string) bool {
-			return e == "" || e == " "
-		},
-	)
-}
+	"github.com/shanedell/goutils/slice"
+)
 
 // GetStringSlice looks up the environment variable and returns an string slice.
 // If the looked up variable is not set the default value is returned.
@@ -26,7 +16,7 @@ func GetStringSlice(varName string, delimiter string, defaultValue []string) []s
 		return defaultValue
 	}
 
-	return ConvertStringToSlice(delimiter, value)
+	return slice.ConvertStringToSlice(delimiter, value)
 }
 
 // GetBoolSlice looks up the environment variable and returns an bool slice or error.
