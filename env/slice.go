@@ -16,7 +16,7 @@ func GetStringSlice(varName string, delimiter string, defaultValue []string) []s
 		return defaultValue
 	}
 
-	return slice.ConvertStringToSlice(delimiter, value)
+	return slice.ConvertStringToSlice(value, delimiter)
 }
 
 // GetBoolSlice looks up the environment variable and returns an bool slice or error.
